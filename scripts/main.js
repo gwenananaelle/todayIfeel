@@ -1,7 +1,6 @@
 var canvas = new fabric.Canvas("canvas");
 
 function openGallery(e, gallery) {
-  console.log(e.target);
   allButtonsActives = document.querySelector(".tablinks.active");
   allButtonsActives.classList.remove("active");
   buttonClicked = e.target;
@@ -33,7 +32,6 @@ function activateDrawingMode() {
   } else {
     canvas.isDrawingMode = true;
   }
-  console.log("drawing mode");
 }
 function clearCanvas() {
   canvas.clear();
