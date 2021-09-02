@@ -1,6 +1,11 @@
-let selectedImg = null;
 var canvas = new fabric.Canvas("canvas");
+
 function openGallery(e, gallery) {
+  console.log(e.target);
+  allButtonsActives = document.querySelector(".tablinks.active");
+  allButtonsActives.classList.remove("active");
+  buttonClicked = e.target;
+  buttonClicked.classList.add("active");
   const galleryBg = document.getElementById("gallery-bg");
   const galleryImg = document.getElementById("gallery-img");
   if (gallery === "backgrounds") {
@@ -54,12 +59,9 @@ function loadBg() {
     img.setAttribute("class", "img");
     img.addEventListener("click", function(url) {
       bgUrl = url;
-      console.log("bg selected " + this.src);
-      //canvas.setBackgroundImage(this.src);
       canvas.setBackgroundImage(this.src, canvas.renderAll.bind(canvas), {
         width: canvas.width,
         height: canvas.height,
-        // Needed to position backgroundImage at 0/0
         originX: "left",
         originY: "top"
       });
@@ -85,42 +87,19 @@ function selectImg() {
     allSelected[i].classList.remove("selected");
   }
   this.classList.toggle("selected");
-  selectedImg = this;
+  drawImg(this);
 }
-function drawImg(x, y) {
-  const img = document.querySelector(".selected");
+function drawImg(selectedImg) {
+  const img = selectedImg;
   if (img) {
-    console.log(img);
     var imgInstance = new fabric.Image(img, {
-      left: x,
-      top: y,
+      left: 100,
+      top: 100,
+      scaleX: 0.25,
+      scaleY: 0.25,
       angle: 0,
       opacity: 1
     });
     canvas.add(imgInstance);
   }
 }
-
-function getMouseXPosition(canvas, event) {
-  let rect = canvas.getBoundingClientRect();
-  let x = event.clientX - rect.left;
-  return x;
-}
-function getMouseYPosition(canvas, event) {
-  let rect = canvas.getBoundingClientRect();
-  let y = event.clientY - rect.top;
-  return y;
-}
-let canvasElem = document.querySelector("canvas");
-canvasElem.addEventListener("mousedown", function(e) {
-  const x = getMouseXPosition(canvasElem, e);
-  const y = getMouseYPosition(canvasElem, e);
-  drawImg(x, y);
-});
-
-canvas.on("mouse:down", function(options) {
-  const x = getMouseXPosition(canvasElem, options.e);
-  const y = getMouseYPosition(canvasElem, options.e);
-  drawImg(x, y);
-  console.log(options.e.clientX, options.e.clientY);
-});

@@ -31,14 +31,17 @@
     <main>
       <aside class="aside-gallery">
         <div class="tab">
-          <button class="tablinks" onclick="openGallery(event, 'backgrounds')">
+          <button
+            class="tablinks active"
+            onclick="openGallery(event, 'backgrounds')"
+          >
             Backgrounds
           </button>
           <button class="tablinks" onclick="openGallery(event, 'images')">
             Images
           </button>
         </div>
-        <div id="gallery-bg" class="aside-bg-gallery"></div>
+        <div id="gallery-bg" class="aside-bg-gallery active"></div>
         <div id="gallery-img" class="aside-bg-gallery"></div>
       </aside>
       <div>
