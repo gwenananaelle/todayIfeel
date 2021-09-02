@@ -1,0 +1,61 @@
+body {
+  box-sizing: border-box;
+}
+main {
+  width: 90vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.img {
+  width: 80%;
+  height: auto;
+  margin-top: 10px;
+}
+.selected {
+  border: solid 2px pink;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  display: inline;
+}
+.h1 {
+  font-family: "Bad Script", cursive;
+  display: inline;
+  position: absolute;
+  left: 50px;
+  top: 20px;
+}
+.h2 {
+  font-family: "Bad Script", cursive;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 20px;
+}
+.header {
+  width: 100%;
+  position: relative;
+}
+.aside-gallery {
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  overflow: scroll;
+  border: solid 1px black;
+}
+.aside-bg-gallery {
+  display: none;
+}
+.aside-bg-gallery.active {
+  display: block;
+}
+button.tablinks {
+  width: 49%;
+  border: none;
+}

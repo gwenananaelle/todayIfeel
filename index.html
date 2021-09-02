@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/451/fabric.min.js"></script>
+    <script src="scripts/main.js" async defer></script>
+  </head>
+  <body onload="loadGalleries()">
+    <header class="header">
+      <img src="/img/logo.png" alt="" srcset="" class="logo" />
+      <h1 class="h1">Maya Del Campo</h1>
+      <h2 class="h2">Today I Feel...</h2>
+    </header>
+    <main>
+      <aside class="aside-gallery">
+        <div class="tab">
+          <button class="tablinks" onclick="openGallery(event, 'backgrounds')">
+            Backgrounds
+          </button>
+          <button class="tablinks" onclick="openGallery(event, 'images')">
+            Images
+          </button>
+        </div>
+        <div id="gallery-bg" class="aside-bg-gallery"></div>
+        <div id="gallery-img" class="aside-bg-gallery"></div>
+      </aside>
+      <div>
+        <div>
+          <button id="clear" onclick="clearCanvas()">
+            <i class="far fa-trash-alt"></i>
+          </button>
+          <button id="delete" onclick="deleteObject()">
+            <i class="fas fa-backspace"></i>
+          </button>
+          <button id="download" onclick="save()">
+            <i class="fas fa-download"></i>
+          </button>
+          <button id="text" onclick="addText()">
+            <i class="fas fa-paragraph"></i>
+          </button>
+          <button id="draw" onclick="activateDrawingMode()">
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+        </div>
+        <canvas
+          id="canvas"
+          class="canvas"
+          width="900"
+          height="500"
+          style="border:1px solid #000000;"
+        >
+        </canvas>
+        <div id="test"></div>
+      </div>
+    </main>
+  </body>
+</html>
