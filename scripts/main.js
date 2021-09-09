@@ -52,7 +52,7 @@ function loadBg() {
   const gallery = document.getElementById("gallery-bg");
   for (let index = 1; index < 7; index++) {
     const img = document.createElement("img");
-    const url = `../img/bg/background-${index}.png`;
+    const url = `/todayIfeel/img/bg/background-${index}.png`;
     img.setAttribute("src", url);
     img.setAttribute("class", "img");
     img.addEventListener("click", function(url) {
@@ -71,7 +71,7 @@ function loadImg() {
   const gallery = document.getElementById("gallery-img");
   for (let index = 1; index < 6; index++) {
     const img = document.createElement("img");
-    const url = `../img/small-img/img-${index}.png`;
+    const url = `/todayIfeel/img/small-img/img-${index}.png`;
     img.setAttribute("src", url);
     img.setAttribute("class", "img");
     img.addEventListener("click", selectImg);
