@@ -22,11 +22,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/451/fabric.min.js"></script>
     <script src="scripts/main.js" async defer></script>
   </head>
-  <body onload="loadGalleries()">
+  <body onload="load()">
     <header class="header">
-      <img src="/todayIfeel/img/logo.png" alt="" srcset="" class="logo" />
-      <h1 class="h1">Maya Del Campo</h1>
-      <h2 class="h2">Today I Feel...</h2>
+      <img src="/img/logo.png" alt="" srcset="" class="logo" />
+      <h1 class="h1 prompt"></h1>
     </header>
     <main>
       <aside class="aside-gallery">
@@ -44,22 +43,28 @@
         <div id="gallery-bg" class="aside-bg-gallery active"></div>
         <div id="gallery-img" class="aside-bg-gallery"></div>
       </aside>
-      <div>
-        <div>
-          <button id="clear" onclick="clearCanvas()">
-            <i class="far fa-trash-alt"></i>
+      <div class="drawing-area">
+        <div class="buttonList">
+          <button id="draw" onclick="activateDrawingMode()">
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+          <button id="brush">
+            <i class="fas fa-paint-brush"></i>
+          </button>
+          <button id="text" onclick="addText()">
+            <i class="fas fa-font"></i>
+          </button>
+          <button id="eraser">
+            <i class="fas fa-eraser"></i>
           </button>
           <button id="delete" onclick="deleteObject()">
             <i class="fas fa-backspace"></i>
           </button>
-          <button id="download" onclick="save()">
+          <button id="clear" onclick="clearCanvas()">
+            <i class="far fa-trash-alt"></i>
+          </button>
+          <button id="save" onclick="save()">
             <i class="fas fa-download"></i>
-          </button>
-          <button id="text" onclick="addText()">
-            <i class="fas fa-paragraph"></i>
-          </button>
-          <button id="draw" onclick="activateDrawingMode()">
-            <i class="fas fa-pencil-alt"></i>
           </button>
         </div>
         <canvas
@@ -70,8 +75,12 @@
           style="border:1px solid #000000;"
         >
         </canvas>
-        <div id="test"></div>
       </div>
     </main>
+    <footer>
+      <a class="madeBY" href="http://www.curiousarttherapy.com/"
+        >Marie Deschamps</a
+      >
+    </footer>
   </body>
 </html>

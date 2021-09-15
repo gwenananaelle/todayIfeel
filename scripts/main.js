@@ -1,5 +1,22 @@
 var canvas = new fabric.Canvas("canvas");
+canvas.setDimensions(
+  { width: "100%", height: "calc(100% - 22px)" },
+  { backstoreOnly: false, cssOnly: true }
+);
+//calc(100% - 44px)
+const promptList = [
+  "I hope...",
+  "I dream of...",
+  "I feel...",
+  "In the past..",
+  "If only..."
+];
 
+function changePrompt() {
+  promptEl = document.querySelector(".prompt");
+  promptEl.innerText =
+    promptList[Math.floor(Math.random() * promptList.length)];
+}
 function openGallery(e, gallery) {
   allButtonsActives = document.querySelector(".tablinks.active");
   allButtonsActives.classList.remove("active");
@@ -16,6 +33,7 @@ function openGallery(e, gallery) {
   }
 }
 function save() {
+  canvas.isDrawingMode = false;
   var dataURL = canvas.toDataURL({
     format: "png",
     left: 0,
@@ -34,34 +52,49 @@ function activateDrawingMode() {
   }
 }
 function clearCanvas() {
+  canvas.isDrawingMode = false;
   canvas.clear();
 }
 function deleteObject() {
+  canvas.isDrawingMode = false;
   canvas.remove(canvas.getActiveObject());
 }
 function addText() {
+  canvas.isDrawingMode = false;
   var text = new fabric.IText("type here", { left: 300, top: 100 });
   canvas.add(text);
 }
 
-function loadGalleries() {
+function load() {
   loadBg();
   loadImg();
+  changePrompt();
 }
 function loadBg() {
   const gallery = document.getElementById("gallery-bg");
-  for (let index = 1; index < 7; index++) {
+  for (let index = 1; index < 20; index++) {
     const img = document.createElement("img");
-    const url = `/todayIfeel/img/bg/background-${index}.png`;
+    const url = `/todayIfeel/img/bg/bg-${index}.jpg`;
     img.setAttribute("src", url);
     img.setAttribute("class", "img");
     img.addEventListener("click", function(url) {
       bgUrl = url;
+      let scaleFactor = 1;
+      if (img.width > img.height) {
+        scaleFactor = canvas.width / img.naturalWidth;
+      } else {
+        scaleFactor = canvas.height / img.naturalHeight;
+      }
+      console.log(
+        `the canvas width is ${canvas.width} the image width is ${img.naturalWidth} and the scale ${scaleFactor}`
+      );
       canvas.setBackgroundImage(this.src, canvas.renderAll.bind(canvas), {
-        width: canvas.width,
-        height: canvas.height,
-        originX: "left",
-        originY: "top"
+        left: canvas.width / 2,
+        top: canvas.height / 2,
+        originX: "center",
+        originY: "center",
+        scaleX: scaleFactor,
+        scaleY: scaleFactor
       });
     });
     gallery.appendChild(img);
@@ -69,7 +102,7 @@ function loadBg() {
 }
 function loadImg() {
   const gallery = document.getElementById("gallery-img");
-  for (let index = 1; index < 6; index++) {
+  for (let index = 1; index < 29; index++) {
     const img = document.createElement("img");
     const url = `/todayIfeel/img/small-img/img-${index}.png`;
     img.setAttribute("src", url);
@@ -93,8 +126,8 @@ function drawImg(selectedImg) {
     var imgInstance = new fabric.Image(img, {
       left: 100,
       top: 100,
-      scaleX: 0.25,
-      scaleY: 0.25,
+      scaleX: 0.1,
+      scaleY: 0.1,
       angle: 0,
       opacity: 1
     });
