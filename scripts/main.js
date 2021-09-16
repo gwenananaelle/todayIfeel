@@ -17,6 +17,7 @@ function changePrompt() {
   promptEl.innerText =
     promptList[Math.floor(Math.random() * promptList.length)];
 }
+document.querySelector(".fa-dice").addEventListener("click", changePrompt);
 function openGallery(e, gallery) {
   allButtonsActives = document.querySelector(".tablinks.active");
   allButtonsActives.classList.remove("active");
@@ -72,7 +73,7 @@ function load() {
 }
 function loadBg() {
   const gallery = document.getElementById("gallery-bg");
-  for (let index = 1; index < 20; index++) {
+  for (let index = 1; index < 19; index++) {
     const img = document.createElement("img");
     const url = `/todayIfeel/img/bg/bg-${index}.jpg`;
     img.setAttribute("src", url);
@@ -102,7 +103,7 @@ function loadBg() {
 }
 function loadImg() {
   const gallery = document.getElementById("gallery-img");
-  for (let index = 1; index < 29; index++) {
+  for (let index = 1; index < 28; index++) {
     const img = document.createElement("img");
     const url = `/todayIfeel/img/small-img/img-${index}.png`;
     img.setAttribute("src", url);
