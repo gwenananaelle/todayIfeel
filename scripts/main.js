@@ -3,7 +3,6 @@ canvas.setDimensions(
   { width: "100%", height: "calc(100% - 22px)" },
   { backstoreOnly: false, cssOnly: true }
 );
-//calc(100% - 44px)
 const promptList = [
   "I hope...",
   "I dream of...",
@@ -18,6 +17,7 @@ function changePrompt() {
     promptList[Math.floor(Math.random() * promptList.length)];
 }
 document.querySelector(".fa-dice").addEventListener("click", changePrompt);
+
 function openGallery(e, gallery) {
   allButtonsActives = document.querySelector(".tablinks.active");
   allButtonsActives.classList.remove("active");
@@ -50,8 +50,36 @@ function activateDrawingMode() {
     canvas.isDrawingMode = false;
   } else {
     canvas.isDrawingMode = true;
+    canvas.freeDrawingBrush.color = "#000";
+    canvas.freeDrawingBrush.width = 1;
   }
 }
+function brush() {
+  const controls = document.querySelector(".controls");
+  if (controls.classList.contains("show")) {
+    controls.classList.remove("show");
+    canvas.isDrawingMode = false;
+  } else {
+    controls.classList.add("show");
+    canvas.isDrawingMode = true;
+    const color = document.querySelector(".coloris");
+    const width = document.querySelector("#thickness");
+    canvas.freeDrawingBrush.color = color.value;
+    canvas.freeDrawingBrush.width = width.value;
+  }
+}
+
+function addEventsBrushControls() {
+  const color = document.querySelector(".coloris");
+  const width = document.querySelector("#thickness");
+  color.addEventListener("change", () => {
+    canvas.freeDrawingBrush.color = color.value;
+  });
+  width.addEventListener("change", () => {
+    canvas.freeDrawingBrush.width = width.value;
+  });
+}
+
 function clearCanvas() {
   canvas.isDrawingMode = false;
   canvas.clear();
@@ -70,12 +98,13 @@ function load() {
   loadBg();
   loadImg();
   changePrompt();
+  addEventsBrushControls();
 }
 function loadBg() {
   const gallery = document.getElementById("gallery-bg");
   for (let index = 1; index < 19; index++) {
     const img = document.createElement("img");
-    const url = `/todayIfeel/img/bg/bg-${index}.jpg`;
+    const url = `img/bg/bg-${index}.jpg`;
     img.setAttribute("src", url);
     img.setAttribute("class", "img");
     img.addEventListener("click", function(url) {
@@ -86,9 +115,6 @@ function loadBg() {
       } else {
         scaleFactor = canvas.height / img.naturalHeight;
       }
-      console.log(
-        `the canvas width is ${canvas.width} the image width is ${img.naturalWidth} and the scale ${scaleFactor}`
-      );
       canvas.setBackgroundImage(this.src, canvas.renderAll.bind(canvas), {
         left: canvas.width / 2,
         top: canvas.height / 2,
@@ -105,7 +131,7 @@ function loadImg() {
   const gallery = document.getElementById("gallery-img");
   for (let index = 1; index < 28; index++) {
     const img = document.createElement("img");
-    const url = `/todayIfeel/img/small-img/img-${index}.png`;
+    const url = `img/small-img/img-${index}.png`;
     img.setAttribute("src", url);
     img.setAttribute("class", "img");
     img.addEventListener("click", selectImg);

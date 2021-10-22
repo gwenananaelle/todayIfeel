@@ -5,12 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="/todayIfeel/main.css"
-    />
+    <!-- style -->
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,12 +21,21 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- coloris -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+    <!-- fabric -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/451/fabric.min.js"></script>
-    <script src="/todayIfeel/scripts/main.js" async defer></script>
+    <!-- my scripts -->
+    <script src="scripts/coloris.js"></script>
+    <script src="scripts/main.js" async defer></script>
   </head>
   <body onload="load()">
     <header class="header">
-      <img src="/todayIfeel/img/logo.png" alt="" srcset="" class="logo" />
+      <img src="img/logo.png" alt="" srcset="" class="logo" />
       <h1 class="h1 prompt"></h1>
       <i class="fas fa-dice dice"></i>
     </header>
@@ -54,7 +60,7 @@
           <button id="draw" onclick="activateDrawingMode()">
             <i class="fas fa-pencil-alt"></i>
           </button>
-          <button id="brush">
+          <button id="brush" onclick="brush()">
             <i class="fas fa-paint-brush"></i>
           </button>
           <button id="text" onclick="addText()">
@@ -72,6 +78,21 @@
           <button id="save" onclick="save()">
             <i class="fas fa-download"></i>
           </button>
+        </div>
+        <div class="controls">
+          here are the control for painting
+          <div>
+            <input
+              type="range"
+              id="thickness"
+              name="thickness"
+              min="0"
+              max="100"
+            />
+          </div>
+          <div class="example circle">
+            <input type="text" class="coloris" value="#cc458faa" />
+          </div>
         </div>
         <canvas
           id="canvas"
