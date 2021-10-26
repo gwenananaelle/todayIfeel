@@ -31,6 +31,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/451/fabric.min.js"></script>
     <!-- my scripts -->
     <script src="scripts/coloris.js"></script>
+    <script src="scripts/Button.js"></script>
+    <script src="scripts/buttons.js"></script>
     <script src="scripts/main.js" async defer></script>
   </head>
   <body onload="load()">
@@ -56,29 +58,7 @@
         <div id="gallery-img" class="aside-bg-gallery"></div>
       </aside>
       <div class="drawing-area">
-        <div class="buttonList">
-          <button id="draw" onclick="activateDrawingMode()">
-            <i class="fas fa-pencil-alt"></i>
-          </button>
-          <button id="brush" onclick="brush()">
-            <i class="fas fa-paint-brush"></i>
-          </button>
-          <button id="text" onclick="addText()">
-            <i class="fas fa-font"></i>
-          </button>
-          <button id="eraser">
-            <i class="fas fa-eraser"></i>
-          </button>
-          <button id="delete" onclick="deleteObject()">
-            <i class="fas fa-backspace"></i>
-          </button>
-          <button id="clear" onclick="clearCanvas()">
-            <i class="far fa-trash-alt"></i>
-          </button>
-          <button id="save" onclick="save()">
-            <i class="fas fa-download"></i>
-          </button>
-        </div>
+        <div class="buttonList"></div>
         <div class="controls">
           here are the control for painting
           <div>

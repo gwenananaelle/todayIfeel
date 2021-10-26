@@ -73,6 +73,7 @@ button.tablinks {
 button {
   width: 44px;
   height: 44px;
+  position: relative;
   border-radius: 5px 5px 0 0;
   background-color: #d07983;
   color: #fff;
@@ -83,35 +84,24 @@ button:hover {
   filter: brightness(1.25);
   filter: drop-shadow(0 0 0.1rem black);
 }
-button.active {
-  filter: brightness(1.25);
+.btn.active::before {
+  width: 44px;
+  height: 44px;
+  z-index: -1;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 5px 5px 0 0;
+  background-color: inherit;
+  transform: scaleY(1.2);
+  transform-origin: bottom;
 }
+
 .tab button.active {
   filter: brightness(1.25);
 }
-#draw {
-  background-color: black;
-}
-#brush {
-  background-color: PaleVioletRed;
-}
-#text {
-  background-color: RebeccaPurple;
-}
-#eraser {
-  background-color: SteelBlue;
-}
-#delete {
-  background-color: orange;
-}
-#clear {
-  background-color: Tomato;
-}
-#save {
-  background-color: YellowGreen;
-  position: absolute;
-  right: 0;
-}
+
 .madeBY {
   font-family: "Bad Script", cursive;
   float: right;

@@ -3,6 +3,23 @@ canvas.setDimensions(
   { width: "100%", height: "calc(100% - 22px)" },
   { backstoreOnly: false, cssOnly: true }
 );
+
+/**
+ * LOAD
+ */
+
+function load() {
+  loadBg();
+  loadImg();
+  changePrompt();
+  activateButton();
+  addEventsBrushControls();
+  buttons.forEach(button => button.createButton());
+}
+/**
+ * PROMPT
+ */
+
 const promptList = [
   "I hope...",
   "I dream of...",
@@ -18,6 +35,10 @@ function changePrompt() {
 }
 document.querySelector(".fa-dice").addEventListener("click", changePrompt);
 
+/**
+ * GALLERIES
+ */
+
 function openGallery(e, gallery) {
   allButtonsActives = document.querySelector(".tablinks.active");
   allButtonsActives.classList.remove("active");
@@ -32,73 +53,6 @@ function openGallery(e, gallery) {
     galleryImg.classList.add("active");
     galleryBg.classList.remove("active");
   }
-}
-function save() {
-  canvas.isDrawingMode = false;
-  var dataURL = canvas.toDataURL({
-    format: "png",
-    left: 0,
-    top: 0,
-    width: canvas.width,
-    height: canvas.height
-  });
-  var newTab = window.open("about:blank", "image from canvas");
-  newTab.document.write("<img src='" + dataURL + "' alt='from canvas'/>");
-}
-function activateDrawingMode() {
-  if (canvas.isDrawingMode === true) {
-    canvas.isDrawingMode = false;
-  } else {
-    canvas.isDrawingMode = true;
-    canvas.freeDrawingBrush.color = "#000";
-    canvas.freeDrawingBrush.width = 1;
-  }
-}
-function brush() {
-  const controls = document.querySelector(".controls");
-  if (controls.classList.contains("show")) {
-    controls.classList.remove("show");
-    canvas.isDrawingMode = false;
-  } else {
-    controls.classList.add("show");
-    canvas.isDrawingMode = true;
-    const color = document.querySelector(".coloris");
-    const width = document.querySelector("#thickness");
-    canvas.freeDrawingBrush.color = color.value;
-    canvas.freeDrawingBrush.width = width.value;
-  }
-}
-
-function addEventsBrushControls() {
-  const color = document.querySelector(".coloris");
-  const width = document.querySelector("#thickness");
-  color.addEventListener("change", () => {
-    canvas.freeDrawingBrush.color = color.value;
-  });
-  width.addEventListener("change", () => {
-    canvas.freeDrawingBrush.width = width.value;
-  });
-}
-
-function clearCanvas() {
-  canvas.isDrawingMode = false;
-  canvas.clear();
-}
-function deleteObject() {
-  canvas.isDrawingMode = false;
-  canvas.remove(canvas.getActiveObject());
-}
-function addText() {
-  canvas.isDrawingMode = false;
-  var text = new fabric.IText("type here", { left: 300, top: 100 });
-  canvas.add(text);
-}
-
-function load() {
-  loadBg();
-  loadImg();
-  changePrompt();
-  addEventsBrushControls();
 }
 function loadBg() {
   const gallery = document.getElementById("gallery-bg");
@@ -160,4 +114,29 @@ function drawImg(selectedImg) {
     });
     canvas.add(imgInstance);
   }
+}
+
+function activateButton() {
+  const buttons = document.querySelectorAll(".btn");
+  buttons.forEach(btn =>
+    btn.addEventListener("click", () => {
+      const activeButtons = document.querySelectorAll(".btn.active");
+      activeButtons.forEach(btn => btn.classList.remove("active"));
+      const controls = document.querySelector(".controls.show");
+      if (controls) {
+        controls.classList.remove("show");
+      }
+      btn.classList.add("active");
+    })
+  );
+}
+function addEventsBrushControls() {
+  const color = document.querySelector(".coloris");
+  const width = document.querySelector("#thickness");
+  color.addEventListener("change", () => {
+    canvas.freeDrawingBrush.color = color.value;
+  });
+  width.addEventListener("change", () => {
+    canvas.freeDrawingBrush.width = width.value;
+  });
 }
