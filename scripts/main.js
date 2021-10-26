@@ -29,9 +29,9 @@ const promptList = [
 ];
 
 function changePrompt() {
-  promptEl = document.querySelector(".prompt");
-  promptEl.innerText =
-    promptList[Math.floor(Math.random() * promptList.length)];
+  const promptEl = document.querySelector(".prompt");
+  let currentIndex = promptList.indexOf(promptEl.innerText);
+  promptEl.innerText = promptList[++currentIndex] || promptList[0];
 }
 document.querySelector(".fa-dice").addEventListener("click", changePrompt);
 
