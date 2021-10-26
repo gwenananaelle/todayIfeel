@@ -75,7 +75,8 @@ function loadBg() {
         originX: "center",
         originY: "center",
         scaleX: scaleFactor,
-        scaleY: scaleFactor
+        scaleY: scaleFactor,
+        erasable: false
       });
     });
     gallery.appendChild(img);
@@ -126,7 +127,7 @@ function addEventsBrushControls() {
   color.addEventListener("change", () => {
     canvas.freeDrawingBrush.color = color.value;
   });
-  width.addEventListener("change", () => {
-    canvas.freeDrawingBrush.width = width.value;
-  });
+  // width.addEventListener("change", () => {
+  //   canvas.freeDrawingBrush.width = width.value;
+  // });
 }

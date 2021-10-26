@@ -22,9 +22,12 @@ const buttons = [
     onClick: function() {
       canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
       const color = document.querySelector(".coloris");
-      const width = document.querySelector("#thickness");
       canvas.freeDrawingBrush.color = color.value;
-      canvas.freeDrawingBrush.width = width.value;
+      canvas.freeDrawingBrush.width = 35;
+      //   const color = document.querySelector(".coloris");
+      //   const width = document.querySelector("#thickness");
+      //   canvas.freeDrawingBrush.color = color.value;
+      //   canvas.freeDrawingBrush.width = width.value;
     }
   }),
   new Button({
@@ -43,7 +46,6 @@ const buttons = [
     isDrawingMode: true,
     onClick: function() {
       canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
-      //  optional
       canvas.freeDrawingBrush.width = 10;
     }
   }),
@@ -68,15 +70,15 @@ const buttons = [
     color: "YellowGreen",
     icon: "fa-download",
     onClick: function() {
-      var dataURL = canvas.toDataURL({
-        format: "png",
-        left: 0,
-        top: 0,
-        width: canvas.width,
-        height: canvas.height
+      const ext = "png";
+      const base64 = canvas.toDataURL({
+        format: ext,
+        enableRetinaScaling: true
       });
-      var newTab = window.open("about:blank", "image from canvas");
-      newTab.document.write("<img src='" + dataURL + "' alt='from canvas'/>");
+      const link = document.createElement("a");
+      link.href = base64;
+      link.download = `art-therapy.${ext}`;
+      link.click();
     }
   })
 ];
