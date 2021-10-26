@@ -7,7 +7,8 @@ const buttons = [
     color: "black",
     icon: "fa-pencil-alt",
     isDrawingMode: true,
-    onClick: function name() {
+    onClick: function() {
+      canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
       canvas.freeDrawingBrush.color = "#000";
       canvas.freeDrawingBrush.width = 1;
     }
@@ -17,25 +18,20 @@ const buttons = [
     color: "PaleVioletRed",
     icon: "fa-paint-brush",
     isDrawingMode: true,
-    onClick: function name() {
-      const controls = document.querySelector(".controls");
-      if (controls.classList.contains("show")) {
-        controls.classList.remove("show");
-        canvas.isDrawingMode = false;
-      } else {
-        controls.classList.add("show");
-        const color = document.querySelector(".coloris");
-        const width = document.querySelector("#thickness");
-        canvas.freeDrawingBrush.color = color.value;
-        canvas.freeDrawingBrush.width = width.value;
-      }
+    hasControls: true,
+    onClick: function() {
+      canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
+      const color = document.querySelector(".coloris");
+      const width = document.querySelector("#thickness");
+      canvas.freeDrawingBrush.color = color.value;
+      canvas.freeDrawingBrush.width = width.value;
     }
   }),
   new Button({
     id: "text",
     color: "RebeccaPurple",
     icon: "fa-font",
-    onClick: function name() {
+    onClick: function() {
       var text = new fabric.IText("type here", { left: 300, top: 100 });
       canvas.add(text);
     }
@@ -43,13 +39,19 @@ const buttons = [
   new Button({
     id: "erase",
     color: "SteelBlue",
-    icon: "fa-eraser"
+    icon: "fa-eraser",
+    isDrawingMode: true,
+    onClick: function() {
+      canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
+      //  optional
+      canvas.freeDrawingBrush.width = 10;
+    }
   }),
   new Button({
     id: "delete",
     color: "orange",
     icon: "fa-backspace",
-    onClick: function name() {
+    onClick: function() {
       canvas.remove(canvas.getActiveObject());
     }
   }),
@@ -57,7 +59,7 @@ const buttons = [
     id: "clear",
     color: "Tomato",
     icon: "fa-trash-alt",
-    onClick: function name() {
+    onClick: function() {
       canvas.clear();
     }
   }),
@@ -65,7 +67,7 @@ const buttons = [
     id: "save",
     color: "YellowGreen",
     icon: "fa-download",
-    onClick: function name() {
+    onClick: function() {
       var dataURL = canvas.toDataURL({
         format: "png",
         left: 0,

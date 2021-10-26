@@ -80,6 +80,9 @@ button {
   border: none;
   padding: 5px;
 }
+button#save {
+  float: right;
+}
 button:hover {
   filter: brightness(1.25);
   filter: drop-shadow(0 0 0.1rem black);

@@ -12,7 +12,7 @@ function load() {
   loadBg();
   loadImg();
   changePrompt();
-  activateButton();
+  // activateButton();
   addEventsBrushControls();
   buttons.forEach(button => button.createButton());
 }
@@ -116,20 +116,10 @@ function drawImg(selectedImg) {
   }
 }
 
-function activateButton() {
-  const buttons = document.querySelectorAll(".btn");
-  buttons.forEach(btn =>
-    btn.addEventListener("click", () => {
-      const activeButtons = document.querySelectorAll(".btn.active");
-      activeButtons.forEach(btn => btn.classList.remove("active"));
-      const controls = document.querySelector(".controls.show");
-      if (controls) {
-        controls.classList.remove("show");
-      }
-      btn.classList.add("active");
-    })
-  );
-}
+/**
+ * BRUSH CONTROLS
+ */
+
 function addEventsBrushControls() {
   const color = document.querySelector(".coloris");
   const width = document.querySelector("#thickness");
