@@ -78,6 +78,17 @@ function loadBg() {
         scaleY: scaleFactor,
         erasable: false
       });
+      const colorThief = new ColorThief();
+      // Make sure image is finished loading
+      if (img.complete) {
+        let color = `rgb(${colorThief.getColor(img).toString()})`;
+        document.body.style.background = color;
+        document.body.style.color = color;
+      } else {
+        img.addEventListener("load", function() {
+          console.log(colorThief.getColor(img).toString());
+        });
+      }
     });
     gallery.appendChild(img);
   }
