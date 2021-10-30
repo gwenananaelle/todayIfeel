@@ -3,7 +3,12 @@ canvas.setDimensions(
   { width: "100%", height: "calc(100% - 22px)" },
   { backstoreOnly: false, cssOnly: true }
 );
-
+var colorPicker = new iro.ColorPicker("#picker", {
+  // Set the size of the color picker
+  width: 150,
+  // Set the initial color to pure red
+  color: "#f00"
+});
 /**
  * LOAD
  */
@@ -133,12 +138,12 @@ function drawImg(selectedImg) {
  */
 
 function addEventsBrushControls() {
-  const color = document.querySelector(".coloris");
-  const width = document.querySelector("#thickness");
-  color.addEventListener("change", () => {
-    canvas.freeDrawingBrush.color = color.value;
+  colorPicker.on("color:change", function(color) {
+    canvas.freeDrawingBrush.color = color.hexString;
   });
-  // width.addEventListener("change", () => {
-  //   canvas.freeDrawingBrush.width = width.value;
-  // });
+  const widthInput = document.querySelector("#thickness");
+  widthInput.addEventListener("change", () => {
+    let width = parseInt(widthInput.value, 10);
+    canvas.freeDrawingBrush.width = width;
+  });
 }

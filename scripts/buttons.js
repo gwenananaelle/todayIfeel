@@ -21,13 +21,10 @@ const buttons = [
     hasControls: true,
     onClick: function() {
       canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
-      const color = document.querySelector(".coloris");
-      canvas.freeDrawingBrush.color = color.value;
-      canvas.freeDrawingBrush.width = 35;
-      //   const color = document.querySelector(".coloris");
-      //   const width = document.querySelector("#thickness");
-      //   canvas.freeDrawingBrush.color = color.value;
-      //   canvas.freeDrawingBrush.width = width.value;
+      canvas.freeDrawingBrush.color = colorPicker.color.hexString;
+      const widthInput = document.querySelector("#thickness");
+      let width = parseInt(widthInput.value, 10);
+      canvas.freeDrawingBrush.width = width;
     }
   }),
   new Button({
