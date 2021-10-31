@@ -3,6 +3,27 @@ canvas.setDimensions(
   { width: "100%", height: "calc(100% - 22px)" },
   { backstoreOnly: false, cssOnly: true }
 );
+window.addEventListener(
+  "keydown",
+  function(event) {
+    if (event.defaultPrevented) {
+      return; // Do nothing if the event was already processed
+    }
+
+    switch (event.key) {
+      case "Backspace": // IE/Edge specific value
+        canvas.remove(canvas.getActiveObject());
+        // Do something for "down arrow" key press.
+        break;
+
+      default:
+        return; // Quit when this doesn't handle the key event.
+    }
+    // Cancel the default action to avoid it being handled twice
+    event.preventDefault();
+  },
+  true
+);
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker
   width: 150,
