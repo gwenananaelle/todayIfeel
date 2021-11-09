@@ -1,13 +1,15 @@
 class Button {
   constructor(config) {
     this.id = config.id;
+    this.title = config.title;
     this.color = config.color;
     this.icon = config.icon;
     this.isDrawingMode = config.isDrawingMode || false;
     this.hasControls = config.hasControls || false;
     this.onClick = config.onClick || function() {};
-    this.createButton = function name(params) {
+    this.createButton = function name() {
       const button = document.createElement("button");
+      button.setAttribute("title", this.title)
       button.innerHTML = `<i class="fas ${this.icon}"></i>`;
       button.id = `${this.id}`;
       button.classList.add("btn");

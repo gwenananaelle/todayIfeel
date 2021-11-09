@@ -35,12 +35,13 @@ var colorPicker = new iro.ColorPicker("#picker", {
  */
 
 function load() {
-  loadBg();
+  // loadBg();
   loadImg();
   changePrompt();
   // activateButton();
   addEventsBrushControls();
   buttons.forEach(button => button.createButton());
+  backgrounds.forEach(background => background.load());
 }
 /**
  * PROMPT
@@ -80,48 +81,10 @@ function openGallery(e, gallery) {
     galleryBg.classList.remove("active");
   }
 }
-function loadBg() {
-  const gallery = document.getElementById("gallery-bg");
-  for (let index = 1; index < 19; index++) {
-    const img = document.createElement("img");
-    const url = `img/bg/bg-${index}.jpg`;
-    img.setAttribute("src", url);
-    img.setAttribute("class", "img");
-    img.addEventListener("click", function(url) {
-      bgUrl = url;
-      let scaleFactor = 1;
-      if (img.width > img.height) {
-        scaleFactor = canvas.width / img.naturalWidth;
-      } else {
-        scaleFactor = canvas.height / img.naturalHeight;
-      }
-      canvas.setBackgroundImage(this.src, canvas.renderAll.bind(canvas), {
-        left: canvas.width / 2,
-        top: canvas.height / 2,
-        originX: "center",
-        originY: "center",
-        scaleX: scaleFactor,
-        scaleY: scaleFactor,
-        erasable: false
-      });
-      const colorThief = new ColorThief();
-      // Make sure image is finished loading
-      if (img.complete) {
-        let color = `rgb(${colorThief.getColor(img).toString()})`;
-        document.body.style.background = color;
-        document.body.style.color = color;
-      } else {
-        img.addEventListener("load", function() {
-          console.log(colorThief.getColor(img).toString());
-        });
-      }
-    });
-    gallery.appendChild(img);
-  }
-}
+
 function loadImg() {
   const gallery = document.getElementById("gallery-img");
-  for (let index = 1; index < 28; index++) {
+  for (let index = 1; index < 39; index++) {
     const img = document.createElement("img");
     const url = `img/small-img/img-${index}.png`;
     img.setAttribute("src", url);

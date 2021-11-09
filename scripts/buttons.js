@@ -4,6 +4,7 @@
 const buttons = [
   new Button({
     id: "pencil",
+    title: "pencil",
     color: "black",
     icon: "fa-pencil-alt",
     isDrawingMode: true,
@@ -15,6 +16,7 @@ const buttons = [
   }),
   new Button({
     id: "brush",
+    title: "brush",
     color: "PaleVioletRed",
     icon: "fa-paint-brush",
     isDrawingMode: true,
@@ -29,6 +31,7 @@ const buttons = [
   }),
   new Button({
     id: "text",
+    title: "text",
     color: "RebeccaPurple",
     icon: "fa-font",
     onClick: function() {
@@ -41,6 +44,7 @@ const buttons = [
   }),
   new Button({
     id: "erase",
+    title: "erase",
     color: "SteelBlue",
     icon: "fa-eraser",
     isDrawingMode: true,
@@ -51,6 +55,7 @@ const buttons = [
   }),
   new Button({
     id: "delete",
+    title: "delete",
     color: "orange",
     icon: "fa-backspace",
     onClick: function() {
@@ -59,6 +64,7 @@ const buttons = [
   }),
   new Button({
     id: "clear",
+    title: "clear",
     color: "Tomato",
     icon: "fa-trash-alt",
     onClick: function() {
@@ -67,6 +73,7 @@ const buttons = [
   }),
   new Button({
     id: "save",
+    title: "save",
     color: "YellowGreen",
     icon: "fa-download",
     onClick: function() {
