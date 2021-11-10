@@ -12,15 +12,17 @@ window.addEventListener(
 
     switch (event.key) {
       case "Backspace": // IE/Edge specific value
+      let activeObject = canvas.getActiveObject();
+      if (!activeObject.isEditing) {
         canvas.remove(canvas.getActiveObject());
-        // Do something for "down arrow" key press.
+        event.preventDefault();
+      }
         break;
 
       default:
         return; // Quit when this doesn't handle the key event.
     }
     // Cancel the default action to avoid it being handled twice
-    event.preventDefault();
   },
   true
 );
