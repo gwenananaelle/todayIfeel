@@ -9,6 +9,24 @@ const backgrounds = [
         url: "img/bg/bg-10.jpg"
     }),
     new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-7.jpg"
+    }),
+    new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-3.jpg"
+    }),
+    new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-5.jpg"
+    }),
+    new Background({
         title: "A View of the Mountain Pass Called the Notch of the White Mountains (Crawford Notch)",
         author: "Thomas Cole",
         year: "1839",
@@ -97,5 +115,23 @@ const backgrounds = [
         author: "Eugène Atget",
         year: "1925",
         url: "img/bg/bg-22.jpg"
+    }),
+    new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-23.jpg"
+    }),
+    new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-24.jpg"
+    }),
+    new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-25.jpg"
     })
 ];

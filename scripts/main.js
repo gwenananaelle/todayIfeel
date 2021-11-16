@@ -86,7 +86,7 @@ function openGallery(e, gallery) {
 
 function loadImg() {
   const gallery = document.getElementById("gallery-img");
-  for (let index = 1; index < 39; index++) {
+  for (let index = 1; index < 72; index++) {
     const img = document.createElement("img");
     const url = `img/small-img/img-${index}.png`;
     img.setAttribute("src", url);
