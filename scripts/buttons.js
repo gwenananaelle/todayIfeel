@@ -44,7 +44,7 @@ const buttons = [
     color: "RebeccaPurple",
     icon: "fa-font",
     onClick: function() {
-      var text = new fabric.IText("type here", { left: 300, top: 100 });
+      var text = new fabric.IText("✍️", { left: 300, top: 100 });    
       text.on("editing:entered", function(e) {
         text.selectAll();
       });
