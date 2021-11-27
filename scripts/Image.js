@@ -12,12 +12,12 @@ class Image {
               case "click":
                 const img = event.target; 
                 var imgInstance = new fabric.Image(img, {
-                    left: 100,
-                    top: 100,
-                    scaleX: 0.1,
-                    scaleY: 0.1,
-                    angle: 0,
-                    opacity: 1
+                    // left: 100,
+                    // top: 100,
+                    // scaleX: 0.1,
+                    // scaleY: 0.1,
+                    // angle: 0,
+                    // opacity: 1
                   });
                   canvas.add(imgInstance);
                 break;
