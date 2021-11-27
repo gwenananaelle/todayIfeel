@@ -37,13 +37,11 @@ var colorPicker = new iro.ColorPicker("#picker", {
  */
 
 function load() {
-  // loadBg();
-  loadImg();
   changePrompt();
-  // activateButton();
   addEventsBrushControls();
   buttons.forEach(button => button.createButton());
   backgrounds.forEach(background => background.load());
+  images.forEach(image => image.load());
 }
 /**
  * PROMPT
@@ -81,41 +79,6 @@ function openGallery(e, gallery) {
   } else {
     galleryImg.classList.add("active");
     galleryBg.classList.remove("active");
-  }
-}
-
-function loadImg() {
-  const gallery = document.getElementById("gallery-img");
-  for (let index = 1; index < 72; index++) {
-    const img = document.createElement("img");
-    const url = `img/small-img/img-${index}.png`;
-    img.setAttribute("src", url);
-    img.setAttribute("class", "img");
-    img.addEventListener("click", selectImg);
-    gallery.appendChild(img);
-  }
-}
-
-function selectImg() {
-  const allSelected = document.getElementsByClassName("selected");
-  for (i = 0; i < allSelected.length; i++) {
-    allSelected[i].classList.remove("selected");
-  }
-  this.classList.toggle("selected");
-  drawImg(this);
-}
-function drawImg(selectedImg) {
-  const img = selectedImg;
-  if (img) {
-    var imgInstance = new fabric.Image(img, {
-      left: 100,
-      top: 100,
-      scaleX: 0.1,
-      scaleY: 0.1,
-      angle: 0,
-      opacity: 1
-    });
-    canvas.add(imgInstance);
   }
 }
 

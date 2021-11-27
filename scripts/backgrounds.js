@@ -133,5 +133,29 @@ const backgrounds = [
         author: "",
         year: "",
         url: "img/bg/bg-25.jpg"
+    }),
+    new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-26.jpg"
+    }),
+    new Background({
+        title: "The Great Wave off Kanagawa",
+        author: "Katsushika Hokusai",
+        year: "1831",
+        url: "img/bg/bg-27.jpg"
+    }),
+    new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-28.jpg"
+    }),
+    new Background({
+        title: "",
+        author: "",
+        year: "",
+        url: "img/bg/bg-29.jpg"
     })
 ];
