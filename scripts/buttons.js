@@ -3,6 +3,15 @@
  * */
 const buttons = [
   new Button({
+    id: "hand",
+    title: "hand",
+    color: "DeepSkyBlue",
+    icon: "fa-hand-paper",
+    isDrawingMode: false,
+    onClick: function() {
+    }
+  }),
+  new Button({
     id: "pencil",
     title: "pencil",
     color: "black",
