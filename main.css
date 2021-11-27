@@ -144,7 +144,13 @@ input {
 .example {
   flex-shrink: 0;
 }
-
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
 .circle .clr-field button {
   width: 22px;
   height: 22px;

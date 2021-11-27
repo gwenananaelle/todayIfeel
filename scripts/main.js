@@ -87,12 +87,16 @@ function openGallery(e, gallery) {
  */
 
 function addEventsBrushControls() {
+  const dot = document.querySelector(".dot");
   colorPicker.on("color:change", function(color) {
+    dot.style.backgroundColor = color.hexString;
     canvas.freeDrawingBrush.color = color.hexString;
   });
   const widthInput = document.querySelector("#thickness");
   widthInput.addEventListener("change", () => {
     let width = parseInt(widthInput.value, 10);
+    dot.style.width = `${width}px`;
+    dot.style.height = `${width}px`;
     canvas.freeDrawingBrush.width = width;
   });
 }
