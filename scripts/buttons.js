@@ -86,7 +86,9 @@ const buttons = [
     color: "Tomato",
     icon: "fa-trash-alt",
     onClick: function() {
-      canvas.clear();
+      if (window.confirm("Do you really want to erase everything?")) {
+        canvas.clear();
+      } 
     }
   }),
   new Button({
