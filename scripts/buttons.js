@@ -54,6 +54,24 @@ const buttons = [
     }
   }),
   new Button({
+    id: "undo",
+    title: "undo",
+    color: "gold",
+    icon: "fa-undo",
+    onClick: function() {
+      canvas.undo();
+    }
+  }),
+  new Button({
+    id: "redo",
+    title: "redo",
+    color: "YellowGreen",
+    icon: "fa-redo",
+    onClick: function() {
+      canvas.redo();
+    }
+  }),
+  new Button({
     id: "delete",
     title: "delete",
     color: "orange",
