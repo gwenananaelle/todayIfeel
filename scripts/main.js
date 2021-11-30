@@ -117,3 +117,6 @@ function shuffle(array) {
 
   return array;
 }
+document.querySelectorAll(".closeBtn").forEach(btn => btn.addEventListener("click", e => {
+  document.querySelectorAll(".show").forEach(controls => controls.classList.remove("show"));
+}))
