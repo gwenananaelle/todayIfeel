@@ -40,8 +40,8 @@ function load() {
   changePrompt();
   addEventsBrushControls();
   buttons.forEach((button) => button.createButton());
-  backgrounds.forEach((background) => background.load());
-  images.forEach((image) => image.load());
+  shuffle(backgrounds).forEach((background) => background.load());
+  shuffle(images).forEach((image) => image.load());
 }
 /**
  * PROMPT
@@ -99,4 +99,21 @@ function addEventsBrushControls() {
     dot.style.height = `${width}px`;
     canvas.freeDrawingBrush.width = width;
   });
+}
+function shuffle(array) {
+  var m = array.length, t, i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
 }
