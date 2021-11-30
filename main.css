@@ -128,8 +128,14 @@ button:hover {
   position: absolute;
   border-radius: 5px;
   padding: 1em;
-  background: pink;
+  background: rgba(255, 255, 255, 0.3);
   z-index: 2;
+}
+.closeBtn {
+  color: #303030;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 input {
   width: 150px;
