@@ -5,7 +5,6 @@ class Button {
     this.color = config.color;
     this.icon = config.icon;
     this.isDrawingMode = config.isDrawingMode || false;
-    this.hasControls = config.hasControls || false;
     this.onClick = config.onClick || function() {};
     this.createButton = function name() {
       const button = document.createElement("button");
@@ -24,7 +23,6 @@ class Button {
           buttons.forEach(button => button.close());
           this.active();
           this.drawingMode();
-          this.showControls();
           this.onClick();
           break;
 
@@ -37,6 +35,7 @@ class Button {
 Button.prototype.active = function() {
   const button = document.querySelector(`#${this.id}`);
   button.classList.add("active");
+  document.querySelectorAll(".show").forEach(controls => controls.classList.remove("show"));
 };
 Button.prototype.close = function() {
   const button = document.querySelector(`#${this.id}`);
@@ -44,12 +43,4 @@ Button.prototype.close = function() {
 };
 Button.prototype.drawingMode = function() {
   canvas.isDrawingMode = this.isDrawingMode;
-};
-Button.prototype.showControls = function() {
-  const controls = document.querySelector(".controls");
-  if (this.hasControls && !controls.classList.contains("show")) {
-    controls.classList.add("show");
-  } else if (controls.classList.contains("show")) {
-    controls.classList.remove("show");
-  }
 };

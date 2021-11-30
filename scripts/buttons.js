@@ -8,8 +8,7 @@ const buttons = [
     color: "DeepSkyBlue",
     icon: "fa-hand-paper",
     isDrawingMode: false,
-    onClick: function() {
-    }
+    onClick: function () {},
   }),
   new Button({
     id: "pencil",
@@ -17,11 +16,11 @@ const buttons = [
     color: "black",
     icon: "fa-pencil-alt",
     isDrawingMode: true,
-    onClick: function() {
+    onClick: function () {
       canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
       canvas.freeDrawingBrush.color = "#000";
       canvas.freeDrawingBrush.width = 1;
-    }
+    },
   }),
   new Button({
     id: "brush",
@@ -29,27 +28,28 @@ const buttons = [
     color: "PaleVioletRed",
     icon: "fa-paint-brush",
     isDrawingMode: true,
-    hasControls: true,
-    onClick: function() {
+    onClick: function () {
       canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
       canvas.freeDrawingBrush.color = colorPicker.color.hexString;
       const widthInput = document.querySelector("#thickness");
       let width = parseInt(widthInput.value, 10);
       canvas.freeDrawingBrush.width = width;
-    }
+      const brushControls = document.querySelector(".brush-controls");
+      brushControls.classList.add("show");
+    },
   }),
   new Button({
     id: "text",
     title: "text",
     color: "RebeccaPurple",
     icon: "fa-font",
-    onClick: function() {
-      var text = new fabric.IText("✍️", { left: 300, top: 100 });    
-      text.on("editing:entered", function(e) {
+    onClick: function () {
+      var text = new fabric.IText("✍️", { left: 300, top: 100 });
+      text.on("editing:entered", function (e) {
         text.selectAll();
       });
       canvas.add(text);
-    }
+    },
   }),
   new Button({
     id: "erase",
@@ -57,64 +57,77 @@ const buttons = [
     color: "SteelBlue",
     icon: "fa-eraser",
     isDrawingMode: true,
-    onClick: function() {
+    onClick: function () {
       canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
       canvas.freeDrawingBrush.width = 10;
-    }
+    },
   }),
   new Button({
     id: "undo",
     title: "undo",
     color: "gold",
     icon: "fa-undo",
-    onClick: function() {
+    onClick: function () {
       canvas.undo();
-    }
+    },
   }),
   new Button({
     id: "redo",
     title: "redo",
     color: "YellowGreen",
     icon: "fa-redo",
-    onClick: function() {
+    onClick: function () {
       canvas.redo();
-    }
+    },
   }),
   new Button({
     id: "delete",
     title: "delete",
     color: "orange",
     icon: "fa-backspace",
-    onClick: function() {
+    onClick: function () {
       canvas.remove(canvas.getActiveObject());
-    }
+    },
   }),
   new Button({
     id: "clear",
     title: "clear",
     color: "Tomato",
     icon: "fa-trash-alt",
-    onClick: function() {
+    onClick: function () {
       if (window.confirm("Do you really want to erase everything?")) {
         canvas.clear();
-      } 
-    }
+      }
+    },
+  }),
+  new Button({
+    id: "sound",
+    title: "sound",
+    color: "MediumSeaGreen",
+    icon: "fa-volume-up",
+    onClick: function () {
+      sound = window.prompt("add a sound file");
+      const audioElm = document.querySelector("audio");
+      audioElm.src = sound;
+      const audioControls = document.querySelector(".audio-controls");
+      audioControls.classList.add("show");
+    },
   }),
   new Button({
     id: "save",
     title: "save",
     color: "YellowGreen",
     icon: "fa-download",
-    onClick: function() {
+    onClick: function () {
       const ext = "png";
       const base64 = canvas.toDataURL({
         format: ext,
-        enableRetinaScaling: true
+        enableRetinaScaling: true,
       });
       const link = document.createElement("a");
       link.href = base64;
       link.download = `art-therapy.${ext}`;
       link.click();
-    }
-  })
+    },
+  }),
 ];

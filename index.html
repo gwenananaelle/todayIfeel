@@ -62,7 +62,15 @@
       </aside>
       <div class="drawing-area">
         <div class="buttonList"></div>
-        <div class="controls">
+        <div class="audio-controls controls">
+          <span class="closeBtn"><i class="fas fa-times"></i></span>
+          <audio controls src="/media/cc0-audio/t-rex-roar.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+          </audio>
+        </div>
+        <div class="brush-controls controls">
+          <span class="closeBtn"><i class="fas fa-times"></i></span>
           <div>
             <input
               type="range"
@@ -80,7 +88,7 @@
           class="canvas"
           width="900"
           height="500"
-          style="border:1px solid #000000;"
+          style="border: 1px solid #000000"
         >
         </canvas>
       </div>

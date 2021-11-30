@@ -5,18 +5,18 @@ canvas.setDimensions(
 );
 window.addEventListener(
   "keydown",
-  function(event) {
+  function (event) {
     if (event.defaultPrevented) {
       return; // Do nothing if the event was already processed
     }
 
     switch (event.key) {
       case "Backspace": // IE/Edge specific value
-      let activeObject = canvas.getActiveObject();
-      if (!activeObject.isEditing) {
-        canvas.remove(canvas.getActiveObject());
-        event.preventDefault();
-      }
+        let activeObject = canvas.getActiveObject();
+        if (!activeObject.isEditing) {
+          canvas.remove(canvas.getActiveObject());
+          event.preventDefault();
+        }
         break;
 
       default:
@@ -30,7 +30,7 @@ var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker
   width: 150,
   // Set the initial color to pure red
-  color: "#f00"
+  color: "#f00",
 });
 /**
  * LOAD
@@ -39,9 +39,9 @@ var colorPicker = new iro.ColorPicker("#picker", {
 function load() {
   changePrompt();
   addEventsBrushControls();
-  buttons.forEach(button => button.createButton());
-  backgrounds.forEach(background => background.load());
-  images.forEach(image => image.load());
+  buttons.forEach((button) => button.createButton());
+  backgrounds.forEach((background) => background.load());
+  images.forEach((image) => image.load());
 }
 /**
  * PROMPT
@@ -52,7 +52,7 @@ const promptList = [
   "I dream of...",
   "I feel...",
   "In the past..",
-  "If only..."
+  "If only...",
 ];
 
 function changePrompt() {
@@ -88,7 +88,7 @@ function openGallery(e, gallery) {
 
 function addEventsBrushControls() {
   const dot = document.querySelector(".dot");
-  colorPicker.on("color:change", function(color) {
+  colorPicker.on("color:change", function (color) {
     dot.style.backgroundColor = color.hexString;
     canvas.freeDrawingBrush.color = color.hexString;
   });
